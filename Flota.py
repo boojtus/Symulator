@@ -1,9 +1,3 @@
-
-# coding: utf-8
-
-# In[1]:
-
-
 import linecache
 from random import randint as rand
 from Statek import *
@@ -117,5 +111,4 @@ if(f1<f2):
 if(f2<f1):
     print('Wygrywa flota1 stosunkiem', f2 , 'do', f1 , 'wygranych bitew.')
 if(f1==f2):
-    print('Mamy remis', f1, 'do', f2)
-
+    print('Mamy remis')
