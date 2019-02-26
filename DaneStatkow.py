@@ -12,5 +12,5 @@ class DaneStatkow:
         self.slownik={}
         for i in range(2,15):
             wiersz = linecache.getline('dane_statkow.txt', i)
-            self.slownik[wiersz.split()[0]]=wiersz.split()[0],wiersz.split()[1],int(wiersz.split()[2]),int(wiersz.split( [3]),int(wiersz.split()[4])
+            self.slownik[wiersz.split()[0]]=wiersz.split()[0],wiersz.split()[1],int(wiersz.split()[2]),int(wiersz.split() [3]),int(wiersz.split()[4])
         file.close()
