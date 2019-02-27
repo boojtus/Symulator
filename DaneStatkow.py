@@ -1,4 +1,6 @@
 import linecache
+"""Klasa DaneStatków wczytuje parametry wszystkich typów statków z plików i przechowuje je w tablicy
+"""
 class DaneStatkow:
     def __init__(self):
         file = open('szybkie_dziala.txt','r')

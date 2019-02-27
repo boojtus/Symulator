@@ -21,6 +21,12 @@ class Flota:
         
         
     def rozgrywka(self):
+        """
+        for obsługuje strzały z floty 1 do floty 2 i sprawdzane jest czy zyskują kolejny strzał,
+        jeśli tak to dodawane są do listy dodatkowych strzałów floty 1.
+        while obsługuje dodatkowe strzały floty 1 
+        """
+        
         for i in range(0,len(self.flota_1)):
             losowa = rand(0,len(self.flota_2)-1)
             wynik=self.flota_1[i].attack(self.flota_2[losowa])
@@ -38,7 +44,11 @@ class Flota:
                 self.zniszczone_2.append(losowa)
             elif wynik==False and self.dodadkowa_1.count(losowa)==0:
                 self.dodadkowa_1.append(aktualna)
-        
+        """
+        for obsługuje strzały z floty 1 do floty 2 i sprawdzane jest czy zyskują kolejny strzał,
+        jeśli tak to dodawane są do listy dodatkowych strzałów floty 1.
+        while obsługuje dodatkowe strzały floty 1 
+        """
         for i in range(0,len(self.flota_2)):
             losowa = rand(0,len(self.flota_1)-1)
             wynik=self.flota_2[i].attack(self.flota_1[losowa])
@@ -59,6 +69,7 @@ class Flota:
         return self.usuwanie()
         
     def usuwanie(self):
+        """Funkcja odpowiedzialna za usuwanie zniszczonych statków"""
         self.zniszczone_1.sort() ; self.zniszczone_2.sort()
         
         while len(self.zniszczone_1) !=0:
@@ -71,12 +82,18 @@ class Flota:
         return self.zwyciezca()
     
     def odnowa_oslony(self):
+        """Funkcja odpowiedzialna za odbudowe osłon"""
         for i in range(len(self.flota_1)):
             self.flota_1[i].odnowa()
         for i in range(len(self.flota_2)):
             self.flota_2[i].odnowa()
             
     def zwyciezca(self):
+        """Funkcja sprawdzająca kto wygrał
+        1 - gdy wygrała pierwsza flota,
+        2 - gdy wygrała druga flota,
+        3 - gdy był remis
+        """
         if len(self.flota_1)==0: return 2
         elif len(self.flota_2)==0: return 1
         else: 
@@ -84,7 +101,9 @@ class Flota:
             return 3
         
     def wyswietl(self):
+        """Funkcja wyświetlająca ilość statków w flocie"""
         print('Flota1 ma statkow: ',len(self.flota_1),'Flota2 ma statkow: ',len(self.flota_2))
+        
 f1=0;f2=0
 for j in range(1,11):       
     f=Flota()

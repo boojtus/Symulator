@@ -21,9 +21,12 @@ class Statek:
         
         
     def odnowa(self):
+        """Funkcja odnawiająca osłone"""
         self.oslona=self.niezmienna_oslona
         
     def atak_oslony(self,atakowany):
+        """Funkcja obsługująca atak osłony, 
+        Przejscie do trafiony - gdy strzał niszczy osłone"""
         if atakowany.oslona>0:
             if atakowany.oslona-self.atak>0:
                 atakowany.oslona-=self.atak
@@ -37,6 +40,9 @@ class Statek:
         else: return self.trafiony(atakowany)
     
     def trafiony(self, atakowany):
+        """Funkcja obsługująca strzał i punkty strukturalne obrońcy po strzale.
+        Przejscie do ponowny_strzal - gdy statek atakujący zyskuje ponowny strzał
+        True - gdy statek atakowany zostaje zniszczony"""
         atakowany.ps-=self.atak
         self.atak=self.niezmienna_atak
         if atakowany.ps>0:
@@ -53,6 +59,9 @@ class Statek:
             return True
             
     def ponowny_strzal(self,atakowany):
+        """ Funkcja oblicza szanse na ponowny strzal i zwraca:
+        False - gdy statek otrzymał ponowny strzał
+        3 - gdy statek nie ucierpiał"""
         n=DaneStatkow().szybkie_dziala[str(self.skrot)][str(atakowany.skrot)]
         szanse=1-(1/n)
         los=np.random.rand()
